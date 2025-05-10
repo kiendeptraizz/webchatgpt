@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .qr-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .qr-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        canvas {
+            margin: 10px 0;
+        }
+        .download-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator for WebChatGPT</h1>
+    
+    <div class="qr-container">
+        <div class="qr-item">
+            <h2>TPBank QR</h2>
+            <div id="tpbank-qr"></div>
+            <a id="tpbank-download" class="download-btn">Download</a>
+        </div>
+        
+        <div class="qr-item">
+            <h2>MoMo QR</h2>
+            <div id="momo-qr"></div>
+            <a id="momo-download" class="download-btn">Download</a>
+        </div>
+        
+        <div class="qr-item">
+            <h2>ZaloPay QR</h2>
+            <div id="zalo-qr"></div>
+            <a id="zalo-download" class="download-btn">Download</a>
+        </div>
+        
+        <div class="qr-item">
+            <h2>Facebook QR</h2>
+            <div id="facebook-qr"></div>
+            <a id="facebook-download" class="download-btn">Download</a>
+        </div>
+    </div>
+
+    <script>
+        function generateQR(elementId, text, filename) {
+            const qr = qrcode(0, 'M');
+            qr.addData(text);
+            qr.make();
+            
+            const container = document.getElementById(elementId);
+            container.innerHTML = qr.createImgTag(5);
+            
+            const downloadBtn = document.getElementById(elementId + '-download');
+            downloadBtn.addEventListener('click', function() {
+                const canvas = document.createElement('canvas');
+                const img = container.querySelector('img');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                
+                const dataURL = canvas.toDataURL('image/jpeg');
+                downloadBtn.href = dataURL;
+                downloadBtn.download = filename;
+            });
+        }
+
+        // Generate QR codes
+        generateQR('tpbank-qr', 'TPBank: 6571 8042 005 - DO TRUNG KIEN', 'tpbank_qr.jpg');
+        generateQR('momo-qr', 'MoMo: 0378059206 - DO TRUNG KIEN', 'momo_qr.jpg');
+        generateQR('zalo-qr', 'ZaloPay: 0378059206 - DO TRUNG KIEN', 'zalo_qr.jpg');
+        generateQR('facebook-qr', 'Facebook: https://facebook.com/dotrungkien', 'facebook_qr.jpg');
+    </script>
+</body>
+</html>

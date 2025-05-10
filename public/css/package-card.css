@@ -1,0 +1,455 @@
+/* Styles for package cards */
+.package-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.package-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.15);
+    border-color: rgba(67, 97, 238, 0.3);
+}
+
+/* Disable hover effects on touch devices to prevent sticky hover states */
+@media (hover: none) {
+    .package-card:hover {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .package-card:active {
+        transform: scale(0.98);
+        transition: transform 0.2s;
+    }
+}
+
+.package-card:hover::before {
+    opacity: 1;
+}
+
+.package-header {
+    background: linear-gradient(135deg, #6247aa, #4834d4);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.package-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+}
+
+.package-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.package-body {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.package-body p {
+    color: #495057;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    padding-left: 30px;
+    font-size: 0.95rem;
+    color: #495057;
+    transition: all 0.3s ease;
+}
+
+.feature-list li:before {
+    content: "✓";
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-weight: bold;
+    background: #6247aa;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(98, 71, 170, 0.3);
+}
+
+.feature-list li:hover {
+    transform: translateX(5px);
+    color: #6247aa;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+/* Styles for package cards with promotion */
+.package-card.has-promotion {
+    border: 2px solid rgba(98, 71, 170, 0.3);
+    box-shadow: 0 10px 30px rgba(98, 71, 170, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.package-card.has-promotion::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(98, 71, 170, 0.05),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+    z-index: 0;
+}
+
+.package-card.has-promotion::after {
+    content: "KHUYẾN MÃI";
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, #6247aa, #4834d4);
+    color: white;
+    padding: 5px 40px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.package-card.has-promotion .package-header {
+    background: linear-gradient(135deg, #6247aa, #4834d4);
+}
+
+.package-card.has-promotion:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(98, 71, 170, 0.25);
+}
+
+/* Responsive styles for package cards */
+@media (max-width: 768px) {
+    .package-card {
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .package-header {
+        padding: 20px 15px;
+    }
+
+    .package-title {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .package-body {
+        padding: 20px 15px;
+    }
+
+    .feature-list li {
+        padding: 10px 0;
+        padding-left: 28px;
+        font-size: 0.9rem;
+    }
+
+    .feature-list li:before {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+        top: 10px;
+    }
+
+    .package-card.has-promotion::after {
+        font-size: 0.6rem;
+        padding: 3px 30px;
+        top: 15px;
+        right: -30px;
+    }
+
+    /* Mobile-specific card improvements */
+    .package-card {
+        position: relative;
+        overflow: visible;
+    }
+
+    .package-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0)
+        );
+        z-index: 1;
+        opacity: 1;
+    }
+
+    /* Add tap effect */
+    .package-card:active {
+        transform: scale(0.98);
+        transition: transform 0.2s;
+    }
+
+    /* Make cards more compact */
+    .package-card .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Improve feature list readability */
+    .feature-list {
+        margin-bottom: 15px;
+    }
+
+    /* Add mobile grid view for packages */
+    .mobile-grid-view .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+    }
+
+    .mobile-grid-view .col-12 {
+        padding: 0 10px;
+    }
+
+    /* Add swipe indicator for mobile */
+    .swipe-indicator {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+    }
+
+    .swipe-indicator .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        margin: 0 4px;
+    }
+
+    .swipe-indicator .dot.active {
+        background-color: var(--primary-color, #4361ee);
+        width: 20px;
+        border-radius: 4px;
+    }
+}
+
+@media (max-width: 576px) {
+    .package-header {
+        padding: 15px 10px;
+    }
+
+    .package-title {
+        font-size: 1.2rem;
+    }
+
+    .package-body {
+        padding: 15px 10px;
+    }
+
+    .feature-list li {
+        padding: 8px 0;
+        padding-left: 25px;
+        font-size: 0.85rem;
+    }
+
+    .feature-list li:before {
+        width: 16px;
+        height: 16px;
+        font-size: 9px;
+        top: 8px;
+    }
+
+    /* Compact view for very small screens */
+    .package-card .btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Improve touch targets */
+    .feature-list li {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Add card ripple effect */
+    .package-card.ripple {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .package-card.ripple::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.3) 10%,
+            transparent 10.01%
+        );
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .package-card.ripple:active::after {
+        transform: scale(0, 0);
+        opacity: 0.3;
+        transition: 0s;
+    }
+}
+
+/* Extra small mobile devices (less than 375px) */
+@media (max-width: 374.98px) {
+    .package-header {
+        padding: 12px 8px;
+    }
+
+    .package-title {
+        font-size: 1.1rem;
+    }
+
+    .package-body {
+        padding: 12px 8px;
+    }
+
+    .feature-list li {
+        padding: 6px 0;
+        padding-left: 22px;
+        font-size: 0.8rem;
+    }
+
+    .feature-list li:before {
+        width: 14px;
+        height: 14px;
+        font-size: 8px;
+        top: 6px;
+    }
+
+    /* Ultra compact view */
+    .package-card .btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Show fewer features on tiny screens */
+    .feature-list li.mobile-hidden {
+        display: none;
+    }
+
+    /* Add "show more" button */
+    .show-more-features {
+        font-size: 0.8rem;
+        color: var(--primary-color, #4361ee);
+        text-align: center;
+        padding: 5px;
+        cursor: pointer;
+        display: block;
+    }
+}
+
+.package-card.has-promotion .feature-list li:before {
+    background: #6247aa;
+    box-shadow: 0 2px 5px rgba(98, 71, 170, 0.3);
+}
+
+.package-card.has-promotion .btn-primary {
+    background: linear-gradient(135deg, #6247aa, #4834d4);
+    border: none;
+    box-shadow: 0 4px 15px rgba(98, 71, 170, 0.3);
+}
+
+.package-card.has-promotion .btn-primary:hover {
+    background-color: #4834d4;
+    border-color: #3a2ca0;
+}

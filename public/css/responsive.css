@@ -1,0 +1,476 @@
+/* Responsive CSS for Trung Kiên Unlock */
+
+/* General responsive styles */
+html {
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive container */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Tablet devices (768px and up) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+/* Desktop devices (992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Large desktop devices (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Extra large desktop devices (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+/* Mobile devices (less than 768px) */
+@media (max-width: 767.98px) {
+    /* Typography adjustments */
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.5rem !important;
+    }
+
+    h4 {
+        font-size: 1.25rem !important;
+    }
+
+    h5 {
+        font-size: 1.1rem !important;
+    }
+
+    /* Navbar adjustments */
+    .navbar-brand {
+        max-width: 70%;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 1rem;
+    }
+
+    /* Hero section adjustments */
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-image-container {
+        margin-top: 2rem;
+    }
+
+    .tech-frame {
+        transform: none !important;
+    }
+
+    /* Stats section adjustments */
+    .stat-item {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Footer adjustments */
+    .footer h5 {
+        margin-top: 1.5rem;
+    }
+
+    /* Chat support button adjustments */
+    .chat-support-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Small mobile devices (less than 576px) */
+@media (max-width: 575.98px) {
+    /* Further typography adjustments */
+    h1 {
+        font-size: 1.75rem !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3 {
+        font-size: 1.25rem !important;
+    }
+
+    p {
+        font-size: 0.95rem !important;
+    }
+
+    .lead {
+        font-size: 1.1rem !important;
+    }
+
+    /* Navbar adjustments */
+    .navbar-brand {
+        max-width: 60%;
+    }
+
+    .slogan-text {
+        font-size: 10px !important;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Button adjustments */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .btn-sm {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    /* Package card adjustments */
+    .package-card {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Footer adjustments */
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Chat support button adjustments */
+    .chat-support-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .chat-support-tooltip {
+        display: none;
+    }
+
+    /* Section spacing adjustments */
+    section {
+        padding: 2.5rem 0 !important;
+    }
+
+    .mb-5 {
+        margin-bottom: 2rem !important;
+    }
+
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Form controls */
+    .form-control {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Card adjustments */
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    /* Table adjustments */
+    .table th,
+    .table td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small mobile devices (less than 375px) */
+@media (max-width: 374.98px) {
+    /* Further typography adjustments */
+    h1 {
+        font-size: 1.5rem !important;
+    }
+
+    h2 {
+        font-size: 1.35rem !important;
+    }
+
+    h3 {
+        font-size: 1.2rem !important;
+    }
+
+    p {
+        font-size: 0.9rem !important;
+    }
+
+    .lead {
+        font-size: 1rem !important;
+    }
+
+    /* Navbar adjustments */
+    .navbar-brand {
+        max-width: 55%;
+    }
+
+    .slogan-text {
+        font-size: 9px !important;
+    }
+
+    /* Button adjustments */
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    /* Package card adjustments */
+    .package-title {
+        font-size: 1.1rem !important;
+    }
+
+    .package-price {
+        font-size: 1.4rem !important;
+    }
+
+    .feature-list li {
+        font-size: 0.8rem !important;
+        padding-left: 22px !important;
+    }
+
+    .feature-list li:before {
+        width: 16px !important;
+        height: 16px !important;
+        font-size: 8px !important;
+    }
+
+    /* Chat support button adjustments */
+    .chat-support-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    /* Form controls */
+    .form-control {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Fix for sticky hover states on mobile */
+@media (hover: none) {
+    .nav-link:hover::after {
+        width: 0;
+        opacity: 0;
+    }
+
+    .nav-link:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none !important;
+    }
+
+    .feature-list li:hover {
+        transform: none;
+    }
+
+    .footer-links li:hover {
+        transform: none;
+    }
+
+    .social-icons a:hover {
+        transform: none;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .hero-section {
+        padding: 30px 0;
+    }
+
+    .hero-content {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .tech-frame {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .min-h-screen {
+        min-height: -webkit-fill-available;
+    }
+
+    .vh-100 {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Touch-friendly improvements */
+.touch-active {
+    transform: scale(0.97);
+    transition: transform 0.2s ease;
+}
+
+/* Improved scrolling on mobile */
+@media (max-width: 767.98px) {
+    /* Hide scrollbar but allow scrolling */
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Prevent text size adjustment on orientation change */
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Improve tap targets */
+    .nav-link,
+    .btn,
+    .form-control,
+    select,
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Improve form elements */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+
+    /* Prevent pull-to-refresh on iOS */
+    body {
+        overscroll-behavior-y: contain;
+    }
+
+    /* Improve mobile grid layout */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .col,
+    .col-1,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8,
+    .col-9,
+    .col-10,
+    .col-11,
+    .col-12,
+    .col-sm,
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12,
+    .col-md,
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

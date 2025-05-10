@@ -1,0 +1,276 @@
+/* Enhanced Pricing Styles */
+.promotion-badge-large {
+    display: inline-block;
+    background-color: #6247aa;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(98, 71, 170, 0.5);
+    animation: pulse-badge 2s infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.detail-price-container {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem auto;
+    box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+    position: relative;
+    max-width: 500px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-price-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+.detail-price-container .original-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.detail-price-container .discounted-price {
+    font-weight: 800;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: highlight 2s infinite;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.detail-price-container .discounted-price small {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-left: 0.5rem;
+}
+
+.detail-price {
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem auto;
+    box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+    position: relative;
+    max-width: 500px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-weight: 800;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    display: block;
+    letter-spacing: 1px;
+}
+
+.detail-price small {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-left: 0.5rem;
+}
+
+/* Enhanced Package Card Pricing */
+.package-card .package-price-container {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.package-card.has-promotion .package-price-container {
+    background: linear-gradient(135deg, #4361ee10, #3a0ca310);
+    border: 1px solid #4361ee30;
+}
+
+.package-card .original-price {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.package-card .discounted-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.package-card .package-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 0;
+    border-radius: 0;
+    margin: 0.5rem 0;
+}
+
+.package-card .entertainment-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff9900, #ff6d00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    display: inline-block;
+    padding: 0;
+    border-radius: 0;
+    margin: 0.5rem 0;
+    border: none;
+}
+
+/* Price Badge */
+.promotion-badge .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 4px 10px rgba(98, 71, 170, 0.3);
+    border-radius: 8px;
+    font-weight: bold;
+    animation: pulse-badge 1.5s infinite;
+}
+
+@keyframes pulse-badge {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(98, 71, 170, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(98, 71, 170, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(98, 71, 170, 0.3);
+    }
+}
+
+/* Responsive styles for pricing elements */
+@media (max-width: 768px) {
+    .promotion-badge-large {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .detail-price-container {
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .detail-price-container .original-price {
+        font-size: 1.2rem;
+    }
+
+    .detail-price-container .discounted-price {
+        font-size: 2.5rem;
+    }
+
+    .detail-price-container .discounted-price small {
+        font-size: 1rem;
+    }
+
+    .detail-price {
+        font-size: 2.5rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .detail-price small {
+        font-size: 1rem;
+    }
+
+    .package-card .package-price-container {
+        padding: 0.5rem;
+        margin: 0.75rem 0;
+    }
+
+    .package-card .original-price {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .package-card .discounted-price,
+    .package-card .package-price,
+    .package-card .entertainment-price {
+        font-size: 1.8rem;
+        margin: 0.3rem 0;
+    }
+
+    .promotion-badge .badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .promotion-badge-large {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .detail-price-container {
+        padding: 1rem 1.2rem;
+    }
+
+    .detail-price-container .original-price {
+        font-size: 1rem;
+    }
+
+    .detail-price-container .discounted-price {
+        font-size: 2rem;
+    }
+
+    .detail-price-container .discounted-price small {
+        font-size: 0.9rem;
+    }
+
+    .detail-price {
+        font-size: 2rem;
+        padding: 1rem 1.2rem;
+    }
+
+    .detail-price small {
+        font-size: 0.9rem;
+    }
+
+    .package-card .discounted-price,
+    .package-card .package-price,
+    .package-card .entertainment-price {
+        font-size: 1.5rem;
+    }
+}

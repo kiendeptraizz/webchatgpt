@@ -1,0 +1,273 @@
+/* Mobile Navbar Styles for Trung Kiên Unlock */
+
+/* Base navbar styles for mobile */
+@media (max-width: 767.98px) {
+    .navbar {
+        padding: 10px 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .navbar-hidden {
+        transform: translateY(-100%);
+    }
+    
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+    
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    
+    /* Custom hamburger icon */
+    .navbar-toggler-icon {
+        background-image: none !important;
+        position: relative;
+        width: 24px;
+        height: 2px;
+        background-color: var(--primary-color, #4361ee);
+        transition: background-color 0.3s ease;
+    }
+    
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: var(--primary-color, #4361ee);
+        transition: transform 0.3s ease;
+    }
+    
+    .navbar-toggler-icon::before {
+        transform: translateY(-8px);
+    }
+    
+    .navbar-toggler-icon::after {
+        transform: translateY(8px);
+    }
+    
+    /* Animated hamburger icon */
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+        background-color: transparent;
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+        transform: rotate(45deg);
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+        transform: rotate(-45deg);
+    }
+    
+    /* Mobile navbar collapse */
+    .navbar-collapse {
+        background-color: rgba(255, 255, 255, 0.98);
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    
+    .navbar-collapse.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Mobile nav links */
+    .navbar-nav .nav-item {
+        margin: 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 12px 15px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        background-color: rgba(67, 97, 238, 0.1);
+        color: var(--primary-color, #4361ee);
+    }
+    
+    .navbar-nav .nav-link.active {
+        background-color: var(--primary-color, #4361ee);
+        color: white;
+    }
+    
+    /* Mobile dropdown menu */
+    .navbar-nav .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        background-color: rgba(67, 97, 238, 0.05);
+        padding: 0;
+        margin: 0;
+        border-radius: 8px;
+    }
+    
+    .navbar-nav .dropdown-item {
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin: 2px 0;
+    }
+    
+    .navbar-nav .dropdown-item:hover,
+    .navbar-nav .dropdown-item:focus {
+        background-color: rgba(67, 97, 238, 0.1);
+        color: var(--primary-color, #4361ee);
+    }
+    
+    /* Mobile search */
+    .mobile-search-toggle {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        color: var(--primary-color, #4361ee);
+        font-size: 1.2rem;
+        padding: 0;
+    }
+    
+    .mobile-search-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1030;
+        display: none;
+        animation: slideDown 0.3s ease;
+    }
+    
+    .mobile-search-container.show {
+        display: block;
+    }
+    
+    .mobile-search-form {
+        display: flex;
+        align-items: center;
+    }
+    
+    .mobile-search-input {
+        flex: 1;
+        border: none;
+        border-bottom: 2px solid var(--primary-color, #4361ee);
+        padding: 10px 15px;
+        font-size: 1rem;
+        background-color: transparent;
+    }
+    
+    .mobile-search-input:focus {
+        outline: none;
+    }
+    
+    .mobile-search-close {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        color: var(--primary-color, #4361ee);
+        font-size: 1.2rem;
+        padding: 0;
+    }
+}
+
+/* Small mobile devices (less than 576px) */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        max-width: 60%;
+    }
+    
+    .navbar-brand img {
+        max-height: 35px;
+    }
+    
+    .slogan-text {
+        font-size: 10px !important;
+    }
+    
+    .navbar-toggler-icon,
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        width: 22px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Extra small mobile devices (less than 375px) */
+@media (max-width: 374.98px) {
+    .navbar-brand {
+        max-width: 55%;
+    }
+    
+    .navbar-brand img {
+        max-height: 30px;
+    }
+    
+    .slogan-text {
+        font-size: 9px !important;
+    }
+    
+    .navbar-toggler-icon,
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        width: 20px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .navbar-collapse {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 8px 12px;
+    }
+}

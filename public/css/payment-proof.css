@@ -1,0 +1,88 @@
+/* Payment Proof Styles */
+.payment-proof-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.payment-proof-image {
+    max-height: 300px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.payment-proof-image:hover {
+    transform: scale(1.02);
+}
+
+.payment-method-card {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.payment-method-card:hover {
+    border-color: #6c757d;
+    background-color: #f8f9fa;
+}
+
+.form-check-input:checked + .form-check-label .payment-method-card {
+    border-color: #0d6efd;
+    background-color: #f0f7ff;
+}
+
+.qr-code-container {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.qr-code-image {
+    max-width: 200px;
+    border-radius: 4px;
+}
+
+.payment-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.payment-info p {
+    margin-bottom: 8px;
+}
+
+.payment-info strong {
+    color: #495057;
+}
+
+/* Modal styles */
+.modal-payment-proof .modal-body {
+    padding: 1.5rem;
+}
+
+.modal-payment-proof .modal-header {
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+}
+
+.modal-payment-proof .modal-footer {
+    border-top: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+}
+
+/* Section headers */
+.payment-section-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}

@@ -1,0 +1,170 @@
+/* Mobile image optimizations for Trung Kiên Unlock */
+
+/* Base image styles for mobile */
+@media (max-width: 767.98px) {
+    /* Optimize all images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Hero image */
+    .tech-frame-mobile {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+        border: 2px solid rgba(67, 97, 238, 0.2);
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        transition: transform 0.5s ease;
+    }
+    
+    .tech-frame-mobile img {
+        border-radius: 12px;
+        transition: transform 0.5s ease;
+    }
+    
+    .tech-frame-mobile::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(67, 97, 238, 0.3), transparent);
+        z-index: 1;
+    }
+    
+    /* Add subtle animation on scroll */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Optimize testimonial images */
+    .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary-color, #4361ee);
+    }
+    
+    /* Optimize service badge images */
+    .service-badge img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    /* Optimize category images */
+    .category-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    
+    /* Add image placeholders */
+    .img-placeholder {
+        background-color: #f0f0f0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .img-placeholder::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+        animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+    
+    /* Optimize background images */
+    .bg-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    /* Add image zoom effect on tap */
+    .img-zoomable {
+        transition: transform 0.3s ease;
+    }
+    
+    .img-zoomable:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Small mobile devices (less than 576px) */
+@media (max-width: 575.98px) {
+    /* Further optimize hero image */
+    .tech-frame-mobile {
+        max-width: 180px;
+        margin: 0 auto;
+    }
+    
+    /* Optimize testimonial images */
+    .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Optimize service badge images */
+    .service-badge img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Optimize category images */
+    .category-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Extra small mobile devices (less than 375px) */
+@media (max-width: 374.98px) {
+    /* Further optimize hero image */
+    .tech-frame-mobile {
+        max-width: 150px;
+    }
+    
+    /* Optimize testimonial images */
+    .testimonial-avatar {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Optimize service badge images */
+    .service-badge img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Optimize category images */
+    .category-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
