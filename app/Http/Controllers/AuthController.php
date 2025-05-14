@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -141,5 +142,53 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('home');
+    }
+
+    /**
+     * Chuyển hướng người dùng đến trang đăng nhập của nhà cung cấp.
+     */
+    public function redirectToProvider($provider)
+    {
+        if (!in_array($provider, ['google', 'facebook'])) {
+            return redirect()->route('login')->with('error', 'Phương thức đăng nhập không hợp lệ.');
+        }
+
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Xử lý callback từ nhà cung cấp.
+     */
+    public function handleProviderCallback($provider)
+    {
+        try {
+            $socialUser = Socialite::driver($provider)->user();
+        } catch (\Exception $e) {
+            return redirect()->route('login')->with('error', 'Đăng nhập không thành công. Vui lòng thử lại.');
+        }
+
+        // Tìm hoặc tạo người dùng
+        $user = User::where('email', $socialUser->getEmail())->first();
+
+        if (!$user) {
+            // Tạo mã giới thiệu ngẫu nhiên
+            $referralCode = $this->generateUniqueReferralCode(8);
+
+            // Tạo người dùng mới
+            $user = User::create([
+                'name' => $socialUser->getName(),
+                'email' => $socialUser->getEmail(),
+                'password' => Hash::make(Str::random(16)), // Mật khẩu ngẫu nhiên
+                'role' => 'user',
+                'referral_code' => $referralCode,
+                'provider' => $provider,
+                'provider_id' => $socialUser->getId(),
+            ]);
+        }
+
+        // Đăng nhập người dùng
+        Auth::login($user, true);
+
+        return redirect()->route('dashboard');
     }
 }

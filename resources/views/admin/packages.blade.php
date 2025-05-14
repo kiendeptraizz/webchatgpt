@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                     @foreach($packages as $package)
-                    <tr class="package-row" data-category="{{ $package->category_id }}">
+                    <tr class="package-row" data-category="{{ $package->category_id }}" data-id="{{ $package->id }}">
                         <td>{{ $package->id }}</td>
                         <td>{{ $package->name }}</td>
                         <td>
@@ -151,11 +151,11 @@
 
                                                 <div class="mb-3">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="is_shared{{ $package->id }}" name="is_shared" {{ $package->is_shared ? 'checked' : '' }}>
+                                                        <input class="form-check-input" type="checkbox" id="is_shared{{ $package->id }}" name="is_shared" value="1" {{ $package->is_shared ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="is_shared{{ $package->id }}">Gói dùng chung</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="is_combo{{ $package->id }}" name="is_combo" {{ $package->is_combo ? 'checked' : '' }}>
+                                                        <input class="form-check-input" type="checkbox" id="is_combo{{ $package->id }}" name="is_combo" value="1" {{ $package->is_combo ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="is_combo{{ $package->id }}">Gói combo</label>
                                                     </div>
                                                 </div>
@@ -257,11 +257,11 @@
 
                     <div class="mb-3">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="is_shared" name="is_shared">
+                            <input class="form-check-input" type="checkbox" id="is_shared" name="is_shared" value="1">
                             <label class="form-check-label" for="is_shared">Gói dùng chung</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="is_combo" name="is_combo">
+                            <input class="form-check-input" type="checkbox" id="is_combo" name="is_combo" value="1">
                             <label class="form-check-label" for="is_combo">Gói combo</label>
                         </div>
                     </div>
@@ -357,6 +357,39 @@ Không giới hạn số lượng câu hỏi</textarea>
                 }
             });
         }
+
+        // Cuộn đến gói dịch vụ đã chỉnh sửa
+        @if(session('edited_package_id'))
+            const editedPackageId = {{ session('edited_package_id') }};
+            const editedPackageRow = document.querySelector(`.package-row[data-id="${editedPackageId}"]`);
+            if (editedPackageRow) {
+                // Đảm bảo tất cả các gói đều hiển thị
+                const allCategoryFilter = document.querySelector('.category-filter[data-category="all"]');
+                if (allCategoryFilter) {
+                    allCategoryFilter.click();
+                }
+
+                // Cuộn đến gói đã chỉnh sửa và làm nổi bật
+                setTimeout(() => {
+                    editedPackageRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    editedPackageRow.classList.add('highlight-row');
+                    setTimeout(() => {
+                        editedPackageRow.classList.remove('highlight-row');
+                    }, 3000);
+                }, 300);
+            }
+        @endif
     });
 </script>
+
+<style>
+    .highlight-row {
+        animation: highlight-background 3s ease;
+    }
+
+    @keyframes highlight-background {
+        0%, 100% { background-color: transparent; }
+        50% { background-color: rgba(67, 97, 238, 0.1); }
+    }
+</style>
 @endsection

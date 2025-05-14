@@ -295,17 +295,27 @@ document.addEventListener("DOMContentLoaded", function () {
             padding-bottom: 60px;
         }
 
-        /* Style chat support button on mobile */
+        /* Style chat support container on mobile */
         @media (max-width: 767.98px) {
-            .chat-support-btn {
+            .chat-support-container {
                 bottom: 70px;
                 right: 10px;
-                width: 50px;
-                height: 50px;
                 z-index: 999;
+                flex-direction: row;
+                gap: 10px;
             }
 
-            .chat-support-btn .chat-support-tooltip {
+            .chat-support-btn, .zalo-support-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .zalo-support-btn img {
+                width: 50%;
+            }
+
+            .chat-support-tooltip {
                 display: none;
             }
         }

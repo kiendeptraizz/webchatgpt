@@ -47,7 +47,7 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
-                            
+
                             <!-- Edit User Modal -->
                             <div class="modal fade" id="editUserModal{{ $user->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -57,7 +57,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="mb-3">
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Delete User Modal -->
                             <div class="modal fade" id="deleteUserModal{{ $user->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Xóa</button>
@@ -130,7 +130,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="{{ route('admin.users.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Tên</label>

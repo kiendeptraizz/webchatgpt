@@ -45,6 +45,9 @@
                                     <i class="fas fa-lock text-muted"></i>
                                 </span>
                                 <input type="password" class="form-control border-start-0 @error('password') is-invalid @enderror" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                                <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword">
+                                    <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                                </button>
                                 @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -68,14 +71,11 @@
                     <div class="text-center mt-4">
                         <p class="text-muted mb-3">Hoặc đăng nhập với</p>
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-google"></i>
+                            <a href="{{ route('auth.social', 'google') }}" class="btn btn-outline-danger">
+                                <i class="fab fa-google me-2"></i>Google
                             </a>
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-github"></i>
+                            <a href="{{ route('auth.social', 'facebook') }}" class="btn btn-outline-primary">
+                                <i class="fab fa-facebook-f me-2"></i>Facebook
                             </a>
                         </div>
                     </div>
@@ -84,4 +84,31 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('togglePasswordIcon');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                // Thay đổi kiểu input
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Thay đổi icon
+                if (type === 'text') {
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            });
+        }
+    });
+</script>
 @endsection

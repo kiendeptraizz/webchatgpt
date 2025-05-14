@@ -48,6 +48,9 @@
                                     <i class="fas fa-lock text-muted"></i>
                                 </span>
                                 <input type="password" class="form-control border-start-0 @error('password') is-invalid @enderror" id="password" name="password" placeholder="Tạo mật khẩu (ít nhất 8 ký tự)" required>
+                                <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword">
+                                    <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                                </button>
                                 @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -61,10 +64,13 @@
                                     <i class="fas fa-lock text-muted"></i>
                                 </span>
                                 <input type="password" class="form-control border-start-0" id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" required>
+                                <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePasswordConfirmation">
+                                    <i class="fas fa-eye" id="togglePasswordConfirmationIcon"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="referral_code" class="form-label">Mã giới thiệu (nếu có)</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0">
@@ -74,6 +80,9 @@
                                 @error('referral_code')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+                            <div class="mt-2">
+                                <small class="text-primary fw-bold">Nhập mã giới thiệu để nhận thêm 1 tuần sử dụng miễn phí</small>
                             </div>
                         </div>
 
@@ -99,14 +108,11 @@
                     <div class="text-center mt-4">
                         <p class="text-muted mb-3">Hoặc đăng ký với</p>
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-google"></i>
+                            <a href="{{ route('auth.social', 'google') }}" class="btn btn-outline-danger">
+                                <i class="fab fa-google me-2"></i>Google
                             </a>
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-secondary">
-                                <i class="fab fa-github"></i>
+                            <a href="{{ route('auth.social', 'facebook') }}" class="btn btn-outline-primary">
+                                <i class="fab fa-facebook-f me-2"></i>Facebook
                             </a>
                         </div>
                     </div>
@@ -130,6 +136,50 @@
             if (referralCodeInput) {
                 referralCodeInput.value = refCode;
             }
+        }
+
+        // Xử lý hiển thị mật khẩu
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('togglePasswordIcon');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                // Thay đổi kiểu input
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Thay đổi icon
+                if (type === 'text') {
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            });
+        }
+
+        // Xử lý hiển thị xác nhận mật khẩu
+        const togglePasswordConfirmation = document.getElementById('togglePasswordConfirmation');
+        const passwordConfirmationInput = document.getElementById('password_confirmation');
+        const toggleConfirmationIcon = document.getElementById('togglePasswordConfirmationIcon');
+
+        if (togglePasswordConfirmation && passwordConfirmationInput) {
+            togglePasswordConfirmation.addEventListener('click', function() {
+                // Thay đổi kiểu input
+                const type = passwordConfirmationInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordConfirmationInput.setAttribute('type', type);
+
+                // Thay đổi icon
+                if (type === 'text') {
+                    toggleConfirmationIcon.classList.remove('fa-eye');
+                    toggleConfirmationIcon.classList.add('fa-eye-slash');
+                } else {
+                    toggleConfirmationIcon.classList.remove('fa-eye-slash');
+                    toggleConfirmationIcon.classList.add('fa-eye');
+                }
+            });
         }
     });
 </script>

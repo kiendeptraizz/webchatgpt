@@ -60,6 +60,10 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
+// Social login routes
+Route::get('/auth/{provider}', [AuthController::class, 'redirectToProvider'])->name('auth.social');
+Route::get('/auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard routes (protected by auth middleware)

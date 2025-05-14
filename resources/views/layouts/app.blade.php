@@ -188,11 +188,20 @@
             box-shadow: var(--neon-shadow);
         }
 
-        /* Chat Support Button */
-        .chat-support-btn {
+        /* Chat Support Container */
+        .chat-support-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        /* Chat Support Button */
+        .chat-support-btn {
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
@@ -203,11 +212,45 @@
             justify-content: center;
             font-size: 28px;
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
             cursor: pointer;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
             border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        /* Zalo Support Button */
+        .zalo-support-btn {
+            width: 70px;
+            height: 70px;
+            background: #0068ff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(0, 104, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-zalo 2s infinite;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            position: relative;
+        }
+
+        .zalo-support-btn img {
+            width: 60%;
+            height: auto;
+        }
+
+        @keyframes pulse-zalo {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 104, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+            }
         }
 
         .chat-support-btn:hover {
@@ -260,7 +303,8 @@
             border-top: 8px solid white;
         }
 
-        .chat-support-btn:hover .chat-support-tooltip {
+        .chat-support-btn:hover .chat-support-tooltip,
+        .zalo-support-btn:hover .chat-support-tooltip {
             opacity: 1;
             top: -55px;
         }
@@ -1690,13 +1734,22 @@
                 height: 50px;
             }
 
+            /* Chat support container adjustments */
+            .chat-support-container {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
             /* Chat support button adjustments */
-            .chat-support-btn {
+            .chat-support-btn, .zalo-support-btn {
                 width: 60px;
                 height: 60px;
                 font-size: 24px;
-                bottom: 20px;
-                right: 20px;
+            }
+
+            .zalo-support-btn img {
+                width: 55%;
             }
 
             /* Footer adjustments */
@@ -1728,10 +1781,21 @@
                 font-size: 1.6rem;
             }
 
-            .chat-support-btn {
+            .chat-support-container {
+                bottom: 15px;
+                right: 15px;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .chat-support-btn, .zalo-support-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
+            }
+
+            .zalo-support-btn img {
+                width: 50%;
             }
 
             .chat-support-tooltip {
@@ -1821,19 +1885,57 @@
         </div>
     </nav>
 
+    <!-- Welcome Modal -->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="welcomeModalLabel">Chào mừng đến với Trung Kiên Unlock</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <img src="{{ asset('images/logo1.jpg') }}" alt="Trung Kiên Unlock" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px;">
+                        <h4 class="fw-bold">Cần tư vấn gấp?</h4>
+                    </div>
+                    <p class="mb-4">Liên hệ ngay với chúng tôi qua Zalo để được tư vấn nhanh chóng và chính xác nhất!</p>
+                    <div class="d-grid">
+                        <a href="https://zalo.me/0378059206" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="fas fa-comment-dots me-2"></i>Chat Zalo ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dontShowAgain">
+                        <label class="form-check-label" for="dontShowAgain">
+                            Không hiển thị lại
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main>
         @yield('content')
     </main>
 
     <!-- Chat Support Button -->
-    <a href="{{ route('chat') }}" class="chat-support-btn" id="chatSupportBtn">
-        <i class="fas fa-headset"></i>
-        <span class="chat-support-tooltip">Chat ngay với tư vấn viên</span>
-        @if(isset($unreadMessagesCount) && $unreadMessagesCount > 0)
-            <div class="chat-notification">{{ $unreadMessagesCount }}</div>
-        @endif
-    </a>
+    <div class="chat-support-container">
+        <a href="{{ route('chat') }}" class="chat-support-btn" id="chatSupportBtn">
+            <i class="fas fa-headset"></i>
+            <span class="chat-support-tooltip">Chat ngay với tư vấn viên</span>
+            @if(isset($unreadMessagesCount) && $unreadMessagesCount > 0)
+                <div class="chat-notification">{{ $unreadMessagesCount }}</div>
+            @endif
+        </a>
+        <a href="https://zalo.me/0378059206" target="_blank" class="zalo-support-btn" id="zaloSupportBtn">
+            <img src="{{ asset('images/icon-zalo.png') }}" alt="Zalo" onerror="this.src='https://stc-zaloprofile.zdn.vn/pc/v1/images/zalo_logo.png'; this.style.width='80%';">
+            <span class="chat-support-tooltip">Tư vấn qua Zalo: 0378059206</span>
+        </a>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1960,6 +2062,29 @@
             mirror: false,
             offset: 50
         });
+
+        // Show welcome modal
+        const welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+        const dontShowAgainCheckbox = document.getElementById('dontShowAgain');
+
+        // Check if user has chosen not to see the modal again
+        if (!localStorage.getItem('dontShowWelcomeModal')) {
+            // Show modal after 2 seconds
+            setTimeout(function() {
+                welcomeModal.show();
+            }, 2000);
+        }
+
+        // Handle "Don't show again" checkbox
+        if (dontShowAgainCheckbox) {
+            dontShowAgainCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    localStorage.setItem('dontShowWelcomeModal', 'true');
+                } else {
+                    localStorage.removeItem('dontShowWelcomeModal');
+                }
+            });
+        }
         // Show chat tooltip after 2 seconds
         setTimeout(function() {
             const chatBtn = document.querySelector('.chat-support-btn');

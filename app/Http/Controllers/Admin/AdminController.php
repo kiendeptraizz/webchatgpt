@@ -214,6 +214,14 @@ class AdminController extends Controller
         // Chuyển đổi features từ textarea thành mảng
         $features = array_filter(explode("\n", $request->features));
 
+        // Debug thông tin
+        \Illuminate\Support\Facades\Log::info('Package Create Debug', [
+            'name' => $request->name,
+            'is_shared_checkbox' => $request->has('is_shared'),
+            'is_combo_checkbox' => $request->has('is_combo'),
+            'all_data' => $request->all()
+        ]);
+
         Package::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -221,8 +229,8 @@ class AdminController extends Controller
             'max_users' => $request->max_users,
             'features' => json_encode($features),
             'category_id' => $request->category_id,
-            'is_shared' => $request->has('is_shared'),
-            'is_combo' => $request->has('is_combo'),
+            'is_shared' => $request->has('is_shared') ? true : false,
+            'is_combo' => $request->has('is_combo') ? true : false,
         ]);
 
         return redirect()->route('admin.packages')
@@ -250,6 +258,15 @@ class AdminController extends Controller
         // Chuyển đổi features từ textarea thành mảng
         $features = array_filter(explode("\n", $request->features));
 
+        // Debug thông tin
+        \Illuminate\Support\Facades\Log::info('Package Update Debug', [
+            'id' => $id,
+            'name' => $request->name,
+            'is_shared_checkbox' => $request->has('is_shared'),
+            'is_combo_checkbox' => $request->has('is_combo'),
+            'all_data' => $request->all()
+        ]);
+
         $package->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -257,12 +274,13 @@ class AdminController extends Controller
             'max_users' => $request->max_users,
             'features' => json_encode($features),
             'category_id' => $request->category_id,
-            'is_shared' => $request->has('is_shared'),
-            'is_combo' => $request->has('is_combo'),
+            'is_shared' => $request->has('is_shared') ? true : false,
+            'is_combo' => $request->has('is_combo') ? true : false,
         ]);
 
         return redirect()->route('admin.packages')
-            ->with('success', 'Gói dịch vụ đã được cập nhật.');
+            ->with('success', 'Gói dịch vụ đã được cập nhật.')
+            ->with('edited_package_id', $id);
     }
 
     /**

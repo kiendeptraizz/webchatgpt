@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tính năng - WebChatGPT')
+@section('title', 'Tính năng - Trung Kiên Unlock')
 
 @section('content')
 <!-- Hero Section -->
@@ -8,8 +8,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="hero-title">Khám phá sức mạnh của WebChatGPT</h1>
-                <p class="hero-subtitle">Các tính năng tiên tiến giúp bạn tối ưu hóa công việc và sáng tạo không giới hạn</p>
+                <h1 class="hero-title">Khám phá dịch vụ của Trung Kiên Unlock</h1>
+                <p class="hero-subtitle">Các dịch vụ AI và công nghệ cao cấp giúp bạn tối ưu hóa công việc và sáng tạo không giới hạn</p>
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
 <section class="py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Tính năng nổi bật</h2>
-            <p class="lead text-muted">Trải nghiệm các công nghệ AI tiên tiến nhất</p>
+            <h2 class="fw-bold mb-3">Dịch vụ nổi bật</h2>
+            <p class="lead text-muted">Trải nghiệm các dịch vụ AI và công nghệ cao cấp</p>
         </div>
 
         <div class="row g-4">
@@ -108,7 +108,7 @@
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">Ứng dụng thực tế</h2>
-            <p class="lead text-muted">WebChatGPT có thể giúp bạn trong nhiều lĩnh vực khác nhau</p>
+            <p class="lead text-muted">Trung Kiên Unlock cung cấp dịch vụ trong nhiều lĩnh vực khác nhau</p>
         </div>
 
         <div class="row g-4">
@@ -175,84 +175,7 @@
     </div>
 </section>
 
-<!-- Comparison Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">So sánh các gói dịch vụ</h2>
-            <p class="lead text-muted">Lựa chọn gói dịch vụ phù hợp với nhu cầu của bạn</p>
-        </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="table-light">
-                    <tr class="text-center">
-                        <th scope="col" style="width: 25%">Tính năng</th>
-                        <th scope="col" style="width: 25%">Gói Cơ Bản</th>
-                        <th scope="col" style="width: 25%">Gói Nâng Cao</th>
-                        <th scope="col" style="width: 25%">Gói Doanh Nghiệp</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Số người dùng</th>
-                        <td class="text-center">6 người</td>
-                        <td class="text-center">3 người</td>
-                        <td class="text-center">Không giới hạn</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Mô hình AI</th>
-                        <td class="text-center">GPT-3.5</td>
-                        <td class="text-center">GPT-4.5</td>
-                        <td class="text-center">Tất cả mô hình</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Số lượng câu hỏi</th>
-                        <td class="text-center">Giới hạn</td>
-                        <td class="text-center">Không giới hạn</td>
-                        <td class="text-center">Không giới hạn</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Tùy chỉnh AI</th>
-                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">API Access</th>
-                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hỗ trợ ưu tiên</th>
-                        <td class="text-center"><i class="fas fa-times text-danger"></i></td>
-                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                        <td class="text-center"><i class="fas fa-check text-success"></i></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Giá</th>
-                        <td class="text-center">69.000 VNĐ/tháng</td>
-                        <td class="text-center">139.000 VNĐ/tháng</td>
-                        <td class="text-center">Liên hệ</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td class="text-center">
-                            <a href="#" class="btn btn-outline-primary">Chọn gói</a>
-                        </td>
-                        <td class="text-center">
-                            <a href="#" class="btn btn-primary">Chọn gói</a>
-                        </td>
-                        <td class="text-center">
-                            <a href="#" class="btn btn-outline-primary">Liên hệ</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
 
 <!-- CTA Section -->
 <section class="py-5 bg-primary text-white">

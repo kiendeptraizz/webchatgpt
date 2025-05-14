@@ -25,17 +25,17 @@
         @endif
     </div>
     <div class="price-comparison">
-        <span class="original-price" style="font-size: 1.1rem; text-decoration: line-through; color: #888; display: block; margin-bottom: 0.25rem;">{{ number_format($package->price, 0, ',', '.') }}đ</span>
+        <span class="original-price" style="font-size: 1.1rem; text-decoration: line-through; color: #888; display: inline-block; margin-bottom: 0.25rem;">{{ number_format($package->price, 0, ',', '.') }}đ</span>
         @if(isset($category) && $category->name == 'GIẢI TRÍ & ĐA PHƯƠNG TIỆN' || isset($childCategory) && $childCategory->name == 'GIẢI TRÍ & ĐA PHƯƠNG TIỆN')
-            <span class="discounted-price" style="color: #ff9900; font-size: 2rem; font-weight: 700; display: block;">{{ number_format($discountedPrice, 0, ',', '.') }}đ</span>
+            <span class="discounted-price" style="color: #ff9900; font-size: 2rem; font-weight: 700; display: inline-block;">{{ number_format($discountedPrice, 0, ',', '.') }}đ</span>
         @else
-            <span class="discounted-price" style="color: #ffffff; font-size: 2rem; font-weight: 700; display: block; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);">{{ number_format($discountedPrice, 0, ',', '.') }}đ</span>
+            <span class="discounted-price" style="color: #ffffff; font-size: 2rem; font-weight: 700; display: inline-block; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);">{{ number_format($discountedPrice, 0, ',', '.') }}đ</span>
         @endif
     </div>
 @else
     @if(isset($category) && $category->name == 'GIẢI TRÍ & ĐA PHƯƠNG TIỆN' || isset($childCategory) && $childCategory->name == 'GIẢI TRÍ & ĐA PHƯƠNG TIỆN')
-        <div class="entertainment-price" style="color: #ff9900; font-size: 2rem; font-weight: 700; display: block;">{{ number_format($package->price, 0, ',', '.') }}đ</div>
+        <div class="entertainment-price" style="color: #ff9900; font-size: 2rem; font-weight: 700; display: inline-block;">{{ number_format($package->price, 0, ',', '.') }}đ</div>
     @else
-        <div class="package-price" style="color: #ffffff; font-size: 2rem; font-weight: 700; display: block; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);">{{ number_format($package->price, 0, ',', '.') }}đ</div>
+        <div class="package-price" style="color: #ffffff; font-size: 2rem; font-weight: 700; display: inline-block; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);">{{ number_format($package->price, 0, ',', '.') }}đ</div>
     @endif
 @endif
